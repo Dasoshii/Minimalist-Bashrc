@@ -1,0 +1,22 @@
+#################################################
+#    Put all your custom shorcuts here by the   #
+#   structure of: alias THE_ALIAS='thecommand'  #
+#################################################
+# Check if there is no conflict with any programs that you may have
+
+# Misc. shorcuts
+alias ls='ls --color=auto'
+alias la='ls -lA'
+alias psg='ps -A | grep'
+alias snn='sudo nano'
+alias sps='sudo pacman -S'
+alias c='clear'
+alias x='exit'
+
+# To have a nice 'make' output
+alias make='clear && make'
+
+# To help miss spelling
+alias sl='ls'
+alias pc='cp'
+alias vm='mv'

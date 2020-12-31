@@ -1,0 +1,105 @@
+#################################################
+#    If you're not in Arch Linux then check     #
+#  all the funcs and adapt them to your distro  #
+#################################################
+
+# For recursively removing orphans and their configuration files,
+# also cleans cache from pacman and yay
+cleansys(){
+    sudo pacman -Rns $(pacman -Qtdq)
+    sudo pacman -Scc && yay -Scc
+    echo -e $bold$l_green"System cleaning finished succesfully  "$end
+}
+
+# Updates system and all packages from Pacman and Yay
+sysup(){
+    sudo pacman -Syu && yay -Sua
+    echo -e $bold$l_green"System and packages all updated  "$end
+}
+
+# Go up in # times you enter
+function gup(){
+    for i in `seq 1 $1`;
+    do
+        cd ../
+    done;
+}
+
+# Just for fun~.
+# If you wanna delete it don't forget to remove waifudb.py and waifugen.py files.
+waifu(){
+    python3 ~/.config/bash/waifugen.py
+}
+
+# Functionality for extracting different type of files (zip, rar, Z, tgz, tbz2, gz, bz2, tar, tar.gz, tar.bz2)
+# If failed, check if you have installed the basic unzip tools
+extract(){
+    good_xtract=`echo -e $bold$green"Done  "$end`
+    inform=`echo -e $l_blue"Command executed:"`
+    if [ -f $1 ] ; then
+        case $1 in
+                *.tar.bz2)
+                tar -xvf $1
+                echo $good_xtract
+                echo -e $inform "tar -xvf $1"$end
+                ;;
+                *.tar.gz)
+                tar -xvzf $1
+                echo $good_xtract
+                echo -e $inform "tar -xvzf $1"$end
+                ;;
+                *.bz2)
+                bunzip2 -v $1
+                echo $good_xtract
+                echo -e $inform "bunzip2 -v $1"$end
+                ;;
+                *.rar)
+                unrar x $1
+                    if [ $? == 0 ]; then
+                        echo $good_xtract
+                        echo -e $inform "unrar x $1"$end
+                    else
+                        echo -e $magenta"Some files may be broken, so it failed."
+                        echo -e "Even then if you wanna keep that files type:"
+                        echo -e $l_magenta"unrar xkb $1"$end
+                    fi
+                ;;
+                *.gz)
+                gunzip -v $1
+                echo $good_xtract
+                echo -e $inform "gunzip -v $1"$end
+                ;;
+                *.tar)
+                tar -xvf $1
+                echo $good_xtract
+                echo -e $inform "tar -xvf $1"$end
+                ;;
+                *.tbz2)
+                tar -xvjf $1
+                echo $good_xtract
+                echo -e $inform "tar -xvjf $1"$end
+                ;;
+                *.tgz)
+                tar -xzvf $1
+                echo $good_xtract
+                echo -e $inform "tar -xzvf $1"$end
+                ;;
+                *.zip)
+                unzip -v $1
+                echo $good_xtract
+                echo -e $inform "unzip -v $1"$end
+                ;;
+                *.Z)
+                uncompress -v $1
+                echo $good_xtract
+                echo -e $inform "uncompress -v $1"$end
+                ;;
+                *)
+                echo -e "$bold$yellow'$1' cannot be extracted via extract()$end"
+                ;;
+        esac
+    else
+        echo -e $bold$red"Error:$end$red '$1' is not a valid file"$end
+        echo -e $green"Please check the name and retype 'extract [File]'"$end
+    fi
+}

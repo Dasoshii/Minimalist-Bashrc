@@ -1,0 +1,26 @@
+#################################################
+#   You don't have to touch these unless you    #
+#             know what you're doing            #
+#################################################
+
+# Setting up the variable for time checker
+time_checker=`date +%H`
+
+# Type of greeting depending on your local hour.
+if [ $time_checker -le 05 ]; then
+    greeting="Good dawn"
+elif [ $time_checker -le 12 ]; then
+    greeting="Good morning"
+elif [ $time_checker -le 19 ]; then
+    greeting="Good afternoon"
+elif [ $time_checker -le 23 ]; then
+    greeting="Good evening"
+fi
+
+# If you use the 24 hours format then comment this section
+# Setting if AM or PM
+if [ $time_checker -le 12 ]; then
+    am_pm="AM"
+elif [ $time_checker -le 23 ]; then
+    am_pm="PM"
+fi

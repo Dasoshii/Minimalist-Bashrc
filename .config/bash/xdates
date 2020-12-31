@@ -1,0 +1,27 @@
+#################################################
+#  Since festive days changes in every country  #
+#  I just added the international basic ones:   #
+#   New year's eve, valentine's, BDay & Xmas    #
+#################################################
+
+# New year's eve:     JAN 1
+# Valentine's:        FEB 14
+# BDAY:               CHOOSE
+# Xmas:               DEC 23-DEC 26
+
+# Format of date [MMDD]
+date=`date +%m%d`
+
+if [ $date -eq 0101 ]; then
+    export PS1="🎊 \[$(tput setaf 6)\][\u@\h] \[$(tput setaf 3)\][\W]\[$(tput sgr0)\]🌠 \[$(tput setaf 3)\]$\[$(tput sgr0)\]\[$(tput sgr0)\] "
+    notify-send "Happy New Year $USER! 🥂 " "Best wishes for this $(date +%Y)"
+elif [ $date -eq 0214 ]; then
+    export PS1="❤️️  \[$(tput setaf 5)\][\u@\h] \[$(tput setaf 1)\][\W]\[$(tput sgr0)\]💕 \[$(tput setaf 1)\]$\[$(tput sgr0)\]\[$(tput sgr0)\] "
+    notify-send "Happy valentine's day 💋 " "Love it's love and we're all cool 💑👨‍❤️‍👨👩‍❤️‍👩"
+# elif [ $date -eq YOUR_BDAY ]; then
+#     export PS1="🎂 \[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]💃 \[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+#     notify-send "Happy birthday master $USER! 🎉 " "I'm glad we can spend this day together.\nYour time it's a gift, don't waste it 😄"
+elif [ $date -ge 1223 -a $date -le 1226 ]; then
+    export PS1="🎄\[$(tput setaf 2)\][\u@\h] \[$(tput setaf 1)\][\W]\[$(tput sgr0)\]☃ \[$(tput setaf 3)\]$\[$(tput sgr0)\]\[$(tput sgr0)\] "
+    notify-send "Merry Christmas $USER! 🥂 " "Enjoy this wonderful date, go get some fresh air!"
+fi
