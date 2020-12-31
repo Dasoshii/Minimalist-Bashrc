@@ -12,5 +12,12 @@ Functions added:
 - File descompressor for different types of file (zip, rar, Z, tgz, tbz2, gz, bz2, tar, tar.gz, tar.bz2), so you just need one command.
 
 Features:
-- Change prompt appeareance for special dates and send notification.
-- Anime waifu random generator by typing 'waifu' on terminal.
+- Change prompt appeareance for special dates and send notification (needs notify-send).
+- Anime waifu random generator by typing 'waifu' on terminal (needs python3).
+
+I'll be glad to hear about your ideas!
+[PENDING CHANGES]
+- Alias shorcuts for '2>/dev/null' and '2>/dev/null 2>&1 &' expressions.
+
+Inspiration from where this project idea came out:
+https://github.com/rkirti/bashrc
