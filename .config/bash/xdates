@@ -1,0 +1,48 @@
+#################################################
+#  Since festive days changes in every country  #
+#  I just added the international basic ones:   #
+#   New year's eve, valentine's, BDay & Xmas    #
+#################################################
+
+# New year's eve:     JAN 1
+# Valentine's:        FEB 14
+# BDAY:               CHOOSE
+# Xmas:               DEC 23-DEC 26
+
+#Defining some variables
+# Format of date [MMDD]
+    date=`date +%m%d`
+# Checking for cache file, if not then create
+cache=~/.config/bash/xdates_cache
+    if [[ ! -f $cache ]]; then
+        touch $cache && echo 0 > $cache
+    fi
+    # Related to cache to avoid notification spamming at every terminal open
+        cache_cat=`cat $cache`
+
+# Main function
+if [ $date -eq 0101 ]; then
+    export PS1="🎊 \[$(tput setaf 6)\][\u@\h] \[$(tput setaf 3)\][\W]\[$(tput sgr0)\]🌠 \[$(tput setaf 3)\]$\[$(tput sgr0)\]\[$(tput sgr0)\] "
+    if [ $cache_cat -ne 1 ]; then
+        notify-send "Happy New Year $USER! 🥂 " "Best wishes for this $(date +%Y)"
+        echo "1" > $cache
+    fi
+elif [ $date -eq 0214 ]; then
+    export PS1="❤️️  \[$(tput setaf 5)\][\u@\h] \[$(tput setaf 1)\][\W]\[$(tput sgr0)\]💕 \[$(tput setaf 1)\]$\[$(tput sgr0)\]\[$(tput sgr0)\] "
+    if [ $cache_cat -ne 2 ]; then
+        notify-send "Happy valentine's day 💋 " "Love it's love and we're all cool 💑👨‍❤️‍👨👩‍❤️‍👩"
+        echo "2" > $cache
+    fi
+# elif [ $date -eq YOUR_BDAY ]; then
+#     export PS1="🎂 \[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]💃 \[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+#     if [ $cache_cat -ne 3 ]; then
+#         notify-send "Happy birthday master $USER! 🎉 " "I'm glad we can spend this day together.\nYour time it's a gift, don't waste it 😄"
+#         echo "3" > $cache
+#     fi
+elif [ $date -ge 1223 -a $date -le 1226 ]; then
+    export PS1="🎄\[$(tput setaf 2)\][\u@\h] \[$(tput setaf 1)\][\W]\[$(tput sgr0)\]☃ \[$(tput setaf 3)\]$\[$(tput sgr0)\]\[$(tput sgr0)\] "
+    if [ $cache_cat -ne 4 ]; then
+        notify-send "Merry Christmas $USER! 🥂 " "Enjoy this wonderful date, go get some fresh air!"
+        echo "4" > $cache
+    fi
+fi
