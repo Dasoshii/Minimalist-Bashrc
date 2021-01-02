@@ -8,13 +8,13 @@
 cleansys(){
     sudo pacman -Rns $(pacman -Qtdq)
     sudo pacman -Scc && yay -Scc
-    echo -e $bold$l_green"System cleaning finished succesfully  "$end
+    echo -e $bold$l_green"System cleaning finished succesfully ✅ "$end
 }
 
 # Updates system and all packages from Pacman and Yay
 sysup(){
     sudo pacman -Syu && yay -Sua
-    echo -e $bold$l_green"System and packages all updated  "$end
+    echo -e $bold$l_green"System and packages all updated ✅ "$end
 }
 
 # Go up in # times you enter
@@ -34,7 +34,7 @@ waifu(){
 # Functionality for extracting different type of files (zip, rar, Z, tgz, tbz2, gz, bz2, tar, tar.gz, tar.bz2)
 # If failed, check if you have installed the basic unzip tools
 extract(){
-    good_xtract=`echo -e $bold$green"Done  "$end`
+    good_xtract=`echo -e $bold$green"Done 📤 "$end`
     inform=`echo -e $l_blue"Command executed:"`
     if [ -f $1 ] ; then
         case $1 in
