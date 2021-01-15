@@ -17,9 +17,6 @@ Features:
 
 I'll be glad to hear about your ideas!
 
-[PENDING CHANGES]
-- Alias shorcuts for '2>/dev/null' and '2>/dev/null 2>&1 &' expressions.
-
 
 Inspiration from where this project idea came out:
 https://github.com/rkirti/bashrc
